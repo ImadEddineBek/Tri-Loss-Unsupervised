@@ -27,7 +27,7 @@ Please make sure you have the following installed.
 First step is to unzip the office31 data
 ```
 cd ./data
-tar xvzf office31.tar.gz --keep-newer-filesls
+tar xvzf office31.tar.gz --keep-newer-files
 ```
 
 Run the main file with using any of the following arguments:
