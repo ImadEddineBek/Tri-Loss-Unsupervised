@@ -55,8 +55,8 @@ if __name__ == '__main__':
     parser.add_argument('--log_step', type=int, default=10)
 
     # Possible values: "usps" , "svhn_extra" , "mnist" , "svhn"
-    parser.add_argument('--source', type=str, default='svhn')
-    parser.add_argument('--target', type=str, default='mnist')
+    parser.add_argument('--source', type=str, default='mnist')
+    parser.add_argument('--target', type=str, default='svhn')
 
     config = parser.parse_args()
     print(config)

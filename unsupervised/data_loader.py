@@ -191,10 +191,10 @@ def get_loader(config):
 
     mnist_transform = transforms.Compose([
         transforms.Resize(config.image_size),
-        # transforms.RandomCrop(config.image_size, pad_if_needed=True),
+        transforms.RandomCrop(config.image_size, pad_if_needed=True),
         transforms.Grayscale(num_output_channels=3),
-        # transforms.RandomRotation(40),
-        # transforms.ColorJitter(brightness=30, contrast=30, saturation=30, hue=0.5),
+        transforms.RandomRotation(40),
+        transforms.ColorJitter(brightness=30, contrast=30, saturation=30, hue=0.5),
         transforms.ToTensor(),
         # transforms.RandomApply([transforms.Lambda(lambda x: x.mul(-1)), transforms.Lambda(lambda x: x.mul(1))]),
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
