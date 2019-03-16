@@ -59,6 +59,27 @@ class Net(nn.Module):
             return x, F.softmax(x_c, dim=1)
 
 
+class Net_D(nn.Module):
+    def __init__(self, latent_dim=512):
+        super(Net_D, self).__init__()
+        self.fc1 = nn.Linear(latent_dim, 256)
+        self.fc2 = nn.Linear(256, 128)
+        self.fc3 = nn.Linear(128, 50)
+        self.fc4 = nn.Linear(50, 1)
+
+    def forward(self, x):
+        # Discriminator
+        x_d = F.relu(self.fc1(x))
+        x_d = F.dropout(x_d, training=self.training)
+        x_d = self.fc2(x_d)
+        x_d = F.dropout(x_d, training=self.training)
+        x_d = self.fc3(x_d)
+        x_d = F.dropout(x_d, training=self.training)
+        x_d = self.fc4(x_d)
+
+        return torch.sigmoid(x_d)
+
+
 def conv(c_in, c_out, k_size, stride=2, pad=1, bn=True):
     """Custom convolutional layer for simplicity."""
     layers = []
