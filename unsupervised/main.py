@@ -42,7 +42,7 @@ if __name__ == '__main__':
     parser.add_argument('--pretrain_iters', type=int, default=20000)
     parser.add_argument('--batch_size', type=int, default=64)
     parser.add_argument('--num_workers', type=int, default=2)
-    parser.add_argument('--lr', type=float, default=0.0001)
+    parser.add_argument('--lr', type=float, default=0.0003)
     parser.add_argument('--lr_d', type=float, default=0.0003)
     parser.add_argument('--beta1', type=float, default=0.5)
     parser.add_argument('--beta2', type=float, default=0.999)

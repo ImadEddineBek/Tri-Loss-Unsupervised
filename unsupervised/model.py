@@ -10,12 +10,12 @@ class Net(nn.Module):
         self.office = office
         if not office:
             conv_dim = 64
-            self.conv1 = conv(3, conv_dim, 5, 1, 0)
-            self.conv2 = conv(conv_dim, conv_dim * 2, 5, 2, 1)
-            self.conv3 = conv(conv_dim * 2, conv_dim * 3, 5, 2, 1)
-            self.conv4 = conv(conv_dim * 3, conv_dim * 4, 4, 2, 0)
+            self.conv1 = conv(3, conv_dim, 5, 2, 2)
+            self.conv2 = conv(conv_dim, conv_dim * 2, 5, 2, 2)
+            self.conv3 = conv(conv_dim * 2, conv_dim * 4, 5, 2, 2)
+            self.conv4 = conv(conv_dim * 4, conv_dim * 8, 4, 1, 0)
             self.conv2_drop = nn.Dropout2d()
-            self.fc1 = nn.Linear(latent_dim, 256)
+            self.fc1 = nn.Linear(512, 256)
             self.fc2 = nn.Linear(256, 128)
             self.fc3 = nn.Linear(128, 50)
             self.fc4 = nn.Linear(50, 10)
@@ -38,9 +38,7 @@ class Net(nn.Module):
 
             x = F.leaky_relu(self.conv3(x), 0.05)
             x = F.leaky_relu(self.conv4(x), 0.05)
-            # print(x.shape)
             x = x.view(x.shape[0], -1)
-            # print(x.shape)
 
             # Classifier
             x_c = F.relu(self.fc1(x))
